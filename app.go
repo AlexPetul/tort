@@ -3,6 +3,7 @@ package main
 import (
 	"aroom/internal/git"
 	"aroom/internal/models"
+	"aroom/internal/preload"
 	"aroom/internal/repository"
 	"context"
 	"fmt"
@@ -29,7 +30,7 @@ func (a *App) startup(ctx context.Context) {
 		panic(err)
 	}
 	if len(items) == 0 {
-		projects, err := readInitial()
+		projects, err := preload.ReadInitial()
 		if err != nil {
 			panic(err)
 		}
